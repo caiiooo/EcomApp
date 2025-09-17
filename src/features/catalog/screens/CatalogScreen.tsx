@@ -1,20 +1,36 @@
+import React from "react";
+import { FlatList, ActivityIndicator, Text } from "react-native";
+import ProductCard from "../components/ProductCard";
+import { useCatalog } from "../hooks/useCatalog";
 import { useNavigation } from "@react-navigation/native";
-import { TouchableOpacity, Text } from "react-native";
-import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RootStackParamList } from "@navigation/index";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
-type CatalogScreenNavigation = NativeStackNavigationProp<
-  RootStackParamList,
-  "Catalog"
->;
+type Nav = NativeStackNavigationProp<RootStackParamList, "Catalog">;
 
 export default function CatalogScreen() {
-  const navigation = useNavigation<CatalogScreenNavigation>();
+  const { products, loading, error } = useCatalog();
+  const navigation = useNavigation<Nav>();
+
+  if (loading)
+    return <ActivityIndicator size="large" style={{ marginTop: 20 }} />;
+  if (error) return <Text>{error}</Text>;
+
   return (
-    <TouchableOpacity
-      onPress={() => navigation.navigate("ProductDetail", { id: 1 })}
-    >
-      <Text>Ver Produto</Text>
-    </TouchableOpacity>
+    <FlatList
+      data={products}
+      keyExtractor={(item) => item.id.toString()}
+      renderItem={({ item }) => (
+        <ProductCard
+          product={item}
+          onPress={() => navigation.navigate("ProductDetail", { id: item.id })}
+        />
+      )}
+      numColumns={2}
+      contentContainerStyle={{ padding: 16 }}
+      initialNumToRender={10} 
+      maxToRenderPerBatch={10} 
+      windowSize={5}
+    />
   );
 }
