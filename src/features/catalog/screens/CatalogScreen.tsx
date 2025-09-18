@@ -13,7 +13,13 @@ export default function CatalogScreen() {
   const navigation = useNavigation<Nav>();
 
   if (loading)
-    return <ActivityIndicator size="large" style={{ marginTop: 20 }} />;
+    return (
+      <ActivityIndicator
+        size="large"
+        testID={"loading-indicator"}
+        style={{ marginTop: 20 }}
+      />
+    );
   if (error) return <Text>{error}</Text>;
 
   return (
@@ -28,8 +34,8 @@ export default function CatalogScreen() {
       )}
       numColumns={2}
       contentContainerStyle={{ padding: 16 }}
-      initialNumToRender={10} 
-      maxToRenderPerBatch={10} 
+      initialNumToRender={10}
+      maxToRenderPerBatch={10}
       windowSize={5}
     />
   );

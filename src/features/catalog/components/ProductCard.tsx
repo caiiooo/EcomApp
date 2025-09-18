@@ -44,6 +44,7 @@ function ProductCard({ product, onPress }: Props) {
     <Card
       onPress={onPress}
       accessibilityLabel={`Ver detalhes de ${product.title}`}
+      testID={`product-${product.id}`}
     >
       <ProductImage
         source={{
