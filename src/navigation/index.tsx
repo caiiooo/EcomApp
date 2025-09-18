@@ -4,7 +4,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import linking from "./linking";
 
 import CatalogScreen from "@features/catalog/screens/CatalogScreen";
-import ProductDetailScreen from "@features/product/screens/ProductScreen";
+import ProductDetailScreen from "@features/productDetail/screens/ProductScreen";
 
 export type RootStackParamList = {
   Catalog: undefined;
@@ -18,7 +18,7 @@ export default function AppNavigation() {
   return (
     <NavigationContainer linking={linking}>
       <Stack.Navigator initialRouteName="Catalog">
-        <Stack.Screen name="Catalog" component={CatalogScreen} />
+        <Stack.Screen name="Catalog" component={CatalogScreen}  options={{ title: "Catalogo" }}/>
         <Stack.Screen
           name="ProductDetail"
           component={ProductDetailScreen}
