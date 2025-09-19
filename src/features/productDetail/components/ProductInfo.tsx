@@ -10,22 +10,27 @@ import {
   ProductImage,
   Title,
 } from "./ProductInfo.styles";
+import { priceFormat } from "@shared/utils/format";
 
 type ProductInfoProps = {
   product: Product;
   onAddToCart: () => void;
 };
 
-export function ProductInfo({ product, onAddToCart }: ProductInfoProps) {
+function ProductInfo({ product, onAddToCart }: ProductInfoProps) {
+  const imageSource = React.useMemo(() => ({ uri: product.image }), [
+    product.image,
+  ]);
+
   return (
     <Container>
       <ProductImage
-        source={{ uri: product.image }}
+        source={imageSource}
         resizeMode={FastImage.resizeMode.contain}
         testID="product-image"
       />
       <Title>{product.title}</Title>
-      <Price>R$ {product.price.toFixed(2)}</Price>
+      <Price>{priceFormat(product.price)}</Price>
       <Description>{product.description}</Description>
 
       <Button
@@ -38,3 +43,5 @@ export function ProductInfo({ product, onAddToCart }: ProductInfoProps) {
     </Container>
   );
 }
+
+export default React.memo(ProductInfo);
