@@ -11,6 +11,7 @@ module.exports = {
           "@api": "./src/api",
           "@store": "./src/store",
           "@types": "./src/types",
+          "@shared": "./src/shared"
         },
       },
     ],
