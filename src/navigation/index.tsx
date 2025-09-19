@@ -2,7 +2,7 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import linking from "./linking";
-import { CartHeaderButton } from "@features/cart/components/CartHeaderButton/CartHeaderButton";
+import { CartHeaderButton } from "@features/cart/components";
 import CatalogScreen from "@features/catalog/screens/CatalogScreen";
 import ProductDetailScreen from "@features/productDetail/screens/ProductScreen";
 import CartScreen from "@features/cart/screens/CartScreen";

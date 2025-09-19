@@ -5,12 +5,23 @@ import { useCatalog } from "../hooks/useCatalog";
 import { useNavigation } from "@react-navigation/native";
 import { RootStackParamList } from "@navigation/index";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { Product } from "@types";
 
 type Nav = NativeStackNavigationProp<RootStackParamList, "Catalog">;
 
 export default function CatalogScreen() {
   const { products, loading, error } = useCatalog();
   const navigation = useNavigation<Nav>();
+
+  const renderItem = React.useCallback(
+    ({ item }: { item: Product }) => (
+      <ProductCard
+        product={item}
+        onPress={() => navigation.navigate("ProductDetail", { id: item.id })}
+      />
+    ),
+    [navigation]
+  );
 
   if (loading)
     return (
@@ -26,12 +37,7 @@ export default function CatalogScreen() {
     <FlatList
       data={products}
       keyExtractor={(item) => item.id.toString()}
-      renderItem={({ item }) => (
-        <ProductCard
-          product={item}
-          onPress={() => navigation.navigate("ProductDetail", { id: item.id })}
-        />
-      )}
+      renderItem={renderItem}
       numColumns={2}
       contentContainerStyle={{ padding: 16 }}
       initialNumToRender={10}

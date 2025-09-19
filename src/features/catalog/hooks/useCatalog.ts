@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { productService } from "@api/productService";
-import { Product } from "../types";
+import { Product } from "@types";
 
 export function useCatalog() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -8,18 +8,26 @@ export function useCatalog() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    let isMounted = true;
     async function fetchProducts() {
       try {
         const data = await productService.getAll();
-        setProducts(data);
+        if (isMounted) setProducts(data);
       } catch (err) {
-        setError("Erro ao carregar produtos");
+        if (isMounted) setError("Erro ao carregar produtos");
       } finally {
-        setLoading(false);
+        if (isMounted) setLoading(false);
       }
     }
     fetchProducts();
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
-  return { products, loading, error };
+  return useMemo(() => ({ products, loading, error }), [
+    products,
+    loading,
+    error,
+  ]);
 }
