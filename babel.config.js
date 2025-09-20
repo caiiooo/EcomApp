@@ -11,8 +11,17 @@ module.exports = {
           "@api": "./src/api",
           "@store": "./src/store",
           "@types": "./src/types",
-          "@shared": "./src/shared"
+          "@shared": "./src/shared",
         },
+      },
+    ],
+    [
+      "module:react-native-dotenv",
+      {
+        moduleName: "@env",
+        path: ".env",
+        safe: false,
+        allowUndefined: true,
       },
     ],
   ],
