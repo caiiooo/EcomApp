@@ -1,5 +1,5 @@
-import styled from "styled-components/native";
-import FastImage from "react-native-fast-image";
+import styled from 'styled-components/native';
+import FastImage from 'react-native-fast-image';
 
 export const Container = styled.ScrollView`
   flex: 1;

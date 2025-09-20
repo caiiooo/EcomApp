@@ -1,6 +1,13 @@
 import React, { useMemo } from "react";
 import { Product } from "@types";
-import { Card, Price, ProductImage, Title } from "./ProductCard.styles";
+import {
+  Card,
+  Price,
+  ProductImage,
+  Title,
+  ViewDetailButton,
+  ViewDetailButtonText,
+} from "./ProductCard.styles";
 import FastImage from "react-native-fast-image";
 import { priceFormat } from "@shared/utils/format";
 

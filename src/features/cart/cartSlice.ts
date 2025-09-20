@@ -1,5 +1,5 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { CartItem } from "@types";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { CartItem } from '@types';
 
 type CartState = {
   items: CartItem[];
@@ -10,10 +10,10 @@ const initialState: CartState = {
 };
 
 const cartSlice = createSlice({
-  name: "cart",
+  name: 'cart',
   initialState,
   reducers: {
-    addToCart: (state, action: PayloadAction<Omit<CartItem, "quantity">>) => {
+    addToCart: (state, action: PayloadAction<Omit<CartItem, 'quantity'>>) => {
       const item = state.items.find((i) => i.id === action.payload.id);
       if (item) {
         item.quantity += 1;

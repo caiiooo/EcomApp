@@ -1,6 +1,6 @@
 import React, { useCallback } from "react";
 import { FlatList, ActivityIndicator, Text } from "react-native";
-import ProductCard from "../components/ProductCard";
+import { ProductCard } from "../components/ProductCard";
 import { useCatalog } from "../hooks/useCatalog";
 import { useNavigation } from "@react-navigation/native";
 import { RootStackParamList } from "@navigation/index";

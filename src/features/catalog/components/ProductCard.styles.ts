@@ -1,7 +1,7 @@
-import styled from "styled-components/native";
-import FastImage from "react-native-fast-image";
-import { Dimensions } from "react-native";
-const screenWidth = Dimensions.get("window").width;
+import styled from 'styled-components/native';
+import FastImage from 'react-native-fast-image';
+import { Dimensions } from 'react-native';
+const screenWidth = Dimensions.get('window').width;
 const cardWidth = screenWidth / 2 - 24; // 2 colunas com espaçamento
 
 export const Card = styled.View`
@@ -40,5 +40,5 @@ export const Title = styled.Text`
 
 export const Price = styled.Text`
   font-size: 14px;
-  margin-top: 5px;
+  margin-bottom: 5px;
 `;

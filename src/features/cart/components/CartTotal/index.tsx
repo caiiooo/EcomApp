@@ -1,5 +1,5 @@
-import React from "react";
-import { TotalText } from "./styles";
+import React from 'react';
+import { TotalText } from './styles';
 
 type CartTotalProps = {
   total: number;

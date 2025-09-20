@@ -1,25 +1,25 @@
-import React, { useCallback } from "react";
-import { FlatList } from "react-native";
-import { shallowEqual, useSelector } from "react-redux";
-import { RootState } from "@store/index";
-import { CartItemDetail, CartTotal, EmptyCart } from "../components";
-import { Container } from "./CartScreen.styles";
-import { CartItem } from "@types";
+import React, { useCallback } from 'react';
+import { FlatList } from 'react-native';
+import { shallowEqual, useSelector } from 'react-redux';
+import { RootState } from '@store/index';
+import { CartItemDetail, CartTotal, EmptyCart } from '../components';
+import { Container } from './CartScreen.styles';
+import { CartItem } from '@types';
 
 export default function CartScreen() {
   const items = useSelector(
     (state: RootState) => state.cart.items,
-    shallowEqual
+    shallowEqual,
   );
 
   const total = React.useMemo(
     () => items.reduce((sum, item) => sum + item.price * item.quantity, 0),
-    [items]
+    [items],
   );
 
   const renderItem = useCallback(
     ({ item }: { item: CartItem }) => <CartItemDetail {...item} />,
-    []
+    [],
   );
 
   if (items.length === 0) {

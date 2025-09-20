@@ -1,11 +1,11 @@
-import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import linking from "./linking";
-import { CartHeaderButton } from "@features/cart/components";
-import CatalogScreen from "@features/catalog/screens/CatalogScreen";
-import ProductDetailScreen from "@features/productDetail/screens/ProductScreen";
-import CartScreen from "@features/cart/screens/CartScreen";
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import linking from './linking';
+import { CartHeaderButton } from '@features/cart/components';
+import CatalogScreen from '@features/catalog/screens/CatalogScreen';
+import ProductDetailScreen from '@features/productDetail/screens/ProductScreen';
+import CartScreen from '@features/cart/screens/CartScreen';
 
 export type RootStackParamList = {
   Catalog: undefined;
@@ -23,7 +23,7 @@ export default function AppNavigation() {
           name="Catalog"
           component={CatalogScreen}
           options={() => ({
-            title: "Catálogo",
+            title: 'Catálogo',
             headerRight: CartHeaderButton,
           })}
         />
@@ -31,14 +31,14 @@ export default function AppNavigation() {
           name="ProductDetail"
           component={ProductDetailScreen}
           options={{
-            title: "Detalhes do Produto",
+            title: 'Detalhes do Produto',
             headerRight: CartHeaderButton,
           }}
         />
         <Stack.Screen
           name="Cart"
           component={CartScreen}
-          options={{ title: "Carrinho" }}
+          options={{ title: 'Carrinho' }}
         />
       </Stack.Navigator>
     </NavigationContainer>

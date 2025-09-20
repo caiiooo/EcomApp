@@ -1,6 +1,6 @@
-import React from "react";
-import FastImage from "react-native-fast-image";
-import { Product } from "@types";
+import React from 'react';
+import FastImage from 'react-native-fast-image';
+import { Product } from '@types';
 import {
   Button,
   ButtonText,
@@ -9,8 +9,8 @@ import {
   Price,
   ProductImage,
   Title,
-} from "./ProductInfo.styles";
-import { priceFormat } from "@shared/utils/format";
+} from './ProductInfo.styles';
+import { priceFormat } from '@shared/utils/format';
 
 type ProductInfoProps = {
   product: Product;
@@ -18,9 +18,10 @@ type ProductInfoProps = {
 };
 
 function ProductInfo({ product, onAddToCart }: ProductInfoProps) {
-  const imageSource = React.useMemo(() => ({ uri: product.image }), [
-    product.image,
-  ]);
+  const imageSource = React.useMemo(
+    () => ({ uri: product.image }),
+    [product.image],
+  );
 
   return (
     <Container>
