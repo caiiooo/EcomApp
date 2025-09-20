@@ -1,97 +1,96 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
-# Getting Started
+# EcomApp - Mobile
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+Mini-app de e-commerce desenvolvido em **React Native CLI**, simulando uma loja com catálogo de produtos, detalhes e carrinho de compras.
 
-## Step 1: Start Metro
+## Tecnologias Utilizadas
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+- React Native CLI  
+- TypeScript  
+- Redux Toolkit para gerenciamento de estado global do carrinho  
+- Styled Components para estilização  
+- FastImage para carregamento eficiente de imagens  
+- Jest + @testing-library/react-native (cobertura unitária no CatalogScreen)  
+- React Navigation (Native Stack)  
+- Linter e Prettier configurados
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+## Funcionalidades
 
-```sh
-# Using npm
-npm start
+- Listagem de produtos provenientes da Fake Store API  
+- Visualização detalhada de produto com título, imagem, descrição e preço  
+- Adição de produtos ao carrinho e gerenciamento de quantidade  
+- Carrinho de compras com total por item e total geral  
+- Mensagem de carrinho vazio com botão para voltar ao catálogo  
+- Navegação entre catálogo → detalhes → carrinho  
+- Deep Linking configurado (`meuapp://produto/:id`)  
 
-# OR using Yarn
-yarn start
+## Estrutura do Projeto
+
 ```
 
-## Step 2: Build and run your app
+src/
+├── api/                # Serviços e chamadas à Fake Store API
+├── features/           # Funcionalidades isoladas
+│   ├── catalog/        # Catálogo de produtos
+│   ├── productDetail/  # Tela de detalhes do produto
+│   └── cart/           # Carrinho de compras e slices do Redux
+├── hooks/              # Custom hooks
+├── navigation/         # Configuração do React Navigation
+├── shared/             # Utilitários e componentes compartilhados
+├── store/              # Redux store e slices
+├── types/              # Tipagens TypeScript
+└── App.tsx             # Entry point do app
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+````
 
-### Android
+## Instalação
 
-```sh
-# Using npm
-npm run android
+```bash
+# Clonar repositório
+git clone https://github.com/seuusuario/ecomapp.git
+cd ecomapp
 
-# OR using Yarn
+# Instalar dependências
+yarn install
+# ou npm install
+
+# Instalar pods no iOS
+cd ios && pod install && cd ..
+````
+
+## Execução do App
+
+```bash
+# Android
 yarn android
-```
 
-### iOS
-
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
-
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
-
-```sh
-bundle install
-```
-
-Then, and every time you update your native dependencies, run:
-
-```sh
-bundle exec pod install
-```
-
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
-
-```sh
-# Using npm
-npm run ios
-
-# OR using Yarn
+# iOS
 yarn ios
 ```
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+## Testes Unitários
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+* Implementados com **Jest** e **React Native Testing Library**
+* Cobertura atualmente focada em **CatalogScreen**
 
-## Step 3: Modify your app
+```bash
+yarn test
+```
 
-Now that you have successfully run the app, let's make changes!
+## Otimizações de Performance
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+* **Memoização de componentes**: `React.memo` aplicado em ProductCard, ProductInfo, CartItemDetail e EmptyCart
+* **Memoização de callbacks**: `useCallback` para funções passadas como props
+* **FlatList otimizado**: `initialNumToRender`, `maxToRenderPerBatch` e `windowSize` ajustados
+* **FastImage** usado para cache e carregamento eficiente de imagens
+* Evita criação de componentes inline no render de listas ou cabeçalhos
+* Redux Toolkit para gerenciamento global do carrinho
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+## Boas práticas implementadas
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+* Arquitetura **feature-based**
+* Tipagem TypeScript consistente
+* Componentes reutilizáveis e isolados
+* Acessibilidade básica
+* Deep Linking funcional
+* Linter e Prettier integrados
