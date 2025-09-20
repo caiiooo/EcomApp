@@ -24,15 +24,17 @@ export default function ProductDetailScreen() {
   const { product, loading } = useProductDetail(id);
 
   const handleAddToCart = useCallback(() => {
-    dispatch(
-      addToCart({
-        id: product.id,
-        title: product.title,
-        price: product.price,
-        image: product.image,
-      })
-    );
-    navigation.navigate("Cart");
+    if (product) {
+      dispatch(
+        addToCart({
+          id: product.id,
+          title: product.title,
+          price: product.price,
+          image: product.image,
+        })
+      );
+      navigation.navigate("Cart");
+    }
   }, [product, dispatch, navigation]);
 
   if (loading) {

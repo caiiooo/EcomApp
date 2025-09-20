@@ -15,7 +15,6 @@ export const Title = styled.Text`
 
 export const Price = styled.Text`
   font-size: 25px;
-  font-weight: 600;
   margin-bottom: 16px;
 `;
 

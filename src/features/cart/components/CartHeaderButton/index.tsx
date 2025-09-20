@@ -11,7 +11,7 @@ const CartIcon = (
   <FontAwesome6 name="basket-shopping" size={16} iconStyle="solid" />
 );
 
-export const CartHeaderButton = React.memo(function CartHeaderButton() {
+export const CartHeaderButton = () => {
   const navigation = useNavigation<NavigationProp>();
   const handlePress = () => {
     navigation.navigate("Cart");
@@ -22,4 +22,4 @@ export const CartHeaderButton = React.memo(function CartHeaderButton() {
       {CartIcon}
     </Button>
   );
-});
+};

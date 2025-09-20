@@ -9,7 +9,7 @@ interface Props {
   onPress: () => void;
 }
 
-function ProductCard({ product, onPress }: Props) {
+export const ProductCard = React.memo(({ product, onPress }: Props) => {
   const source = useMemo(
     () => ({
       uri: product.image,
@@ -19,16 +19,17 @@ function ProductCard({ product, onPress }: Props) {
   );
 
   return (
-    <Card
-      onPress={onPress}
-      accessibilityLabel={`Ver detalhes de ${product.title}`}
-      testID={`product-${product.id}`}
-    >
+    <Card>
       <ProductImage source={source} resizeMode={FastImage.resizeMode.contain} />
       <Title numberOfLines={2}>{product.title}</Title>
       <Price>{priceFormat(product.price)}</Price>
+      <ViewDetailButton
+        onPress={onPress}
+        accessibilityLabel={`Ver detalhes de ${product.title}`}
+        testID={`product-${product.id}`}
+      >
+        <ViewDetailButtonText>Ver Detalhes</ViewDetailButtonText>
+      </ViewDetailButton>
     </Card>
   );
-}
-
-export default React.memo(ProductCard);
+});

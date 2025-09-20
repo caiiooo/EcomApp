@@ -56,14 +56,14 @@ export const CartItemDetail = React.memo(function CartItemDetail({
           <Price>{priceFormat(price * quantity)}</Price>
           <QuantityRow>
             <Button onPress={handleDecrement}>
-              <FontAwesome6 name="minus" size={15} iconStyle="solid" />;
+              <FontAwesome6 name="minus" size={15} iconStyle="solid" />
             </Button>
             <QuantityText>{quantity}</QuantityText>
             <Button onPress={handleIncrement}>
-              <FontAwesome6 name="plus" size={15} iconStyle="solid" />;
+              <FontAwesome6 name="plus" size={15} iconStyle="solid" />
             </Button>
             <Button onPress={handleRemove}>
-              <FontAwesome6 name="trash" size={15} iconStyle="solid" />;
+              <FontAwesome6 name="trash" size={15} iconStyle="solid" />
             </Button>
           </QuantityRow>
         </DetailColumn>

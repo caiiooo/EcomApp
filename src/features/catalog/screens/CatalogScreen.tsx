@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { FlatList, ActivityIndicator, Text } from "react-native";
 import ProductCard from "../components/ProductCard";
 import { useCatalog } from "../hooks/useCatalog";
@@ -13,7 +13,7 @@ export default function CatalogScreen() {
   const { products, loading, error } = useCatalog();
   const navigation = useNavigation<Nav>();
 
-  const renderItem = React.useCallback(
+  const renderItem = useCallback(
     ({ item }: { item: Product }) => (
       <ProductCard
         product={item}
@@ -27,7 +27,7 @@ export default function CatalogScreen() {
     return (
       <ActivityIndicator
         size="large"
-        testID={"loading-indicator"}
+        testID="loading-indicator"
         style={{ marginTop: 20 }}
       />
     );
